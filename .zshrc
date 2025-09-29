@@ -43,6 +43,8 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 zinit light zsh-users/zsh-history-substring-search
+zinit light romkatv/powerlevel10k
+
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
@@ -79,4 +81,3 @@ zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
 source <(carapace _carapace)
 
 # echo 'eval "$(zellij setup --generate-auto-start zsh)"' >> ~/.zshrc
-eval "$(starship init zsh)"
