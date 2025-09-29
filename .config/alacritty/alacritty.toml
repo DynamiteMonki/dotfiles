@@ -1,0 +1,49 @@
+[font]
+size = 14.5
+
+[font.normal]
+family = "JetBrains Mono"
+style = "Regular"
+
+[colors.primary]
+background = "#0b0d10"  # near-black, neutral base [8]
+foreground = "#cfd3da"  # soft gray for readability [8]
+
+[colors.cursor]
+text = "#0b0d10"        # cursor text (inverse) [8]
+cursor = "#cfd3da"      # cursor color [8]
+
+[colors.selection]
+text = "#0b0d10"        # selected text [8]
+background = "#c0c4cb"  # selection bg contrast [8]
+
+[colors.normal]
+black   = "#13161a"     # panel/background variant [8]
+red     = "#d37f8b"     # muted red accent [8]
+green   = "#8aa387"     # muted green accent [8]
+yellow  = "#c7b07a"     # muted yellow accent [8]
+blue    = "#7f8fb7"     # muted blue accent [8]
+magenta = "#a48fb2"     # muted magenta/lavender [8]
+cyan    = "#82a6a9"     # muted cyan/teal [8]
+white   = "#cfd3da"     # ui text gray [8]
+
+[colors.bright]
+black   = "#1a1e24"     # brighter panel [8]
+red     = "#dfa0a9"     # brighter red [8]
+green   = "#9fb7a0"     # brighter green [8]
+yellow  = "#d6c490"     # brighter yellow [8]
+blue    = "#9aa6c9"     # brighter blue [8]
+magenta = "#b9a6c5"     # brighter magenta [8]
+cyan    = "#98bcc0"     # brighter cyan [8]
+white   = "#e3e7ee"     # brighter ui text [8]
+
+[colors.dim]
+black   = "#0e1114"     # dimmed bg [8]
+red     = "#b06b76"     # dim red [8]
+green   = "#748b72"     # dim green [8]
+yellow  = "#a89666"     # dim yellow [8]
+blue    = "#6a7a98"     # dim blue [8]
+magenta = "#8c7897"     # dim magenta [8]
+cyan    = "#6d8f92"     # dim cyan [8]
+white   = "#b7bcc3"     # dim ui text [8]
+
