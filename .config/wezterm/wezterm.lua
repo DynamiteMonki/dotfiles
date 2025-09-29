@@ -9,7 +9,7 @@ return {
 		"JetBrains Mono",
 		"Fira Code",
 	}),
-	font_size = 14.0,
+	font_size = 13.0,
 	harfbuzz_features = { "calt=1", "clig=1", "liga=1" },
 
 	window_padding = {
