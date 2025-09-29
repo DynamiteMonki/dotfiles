@@ -1,1 +1,2 @@
-../../dotfiles/.config/nvim/mise.toml
+[tools]
+lua-language-server = "3.15.0"

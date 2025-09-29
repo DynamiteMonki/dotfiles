@@ -1,1 +1,5 @@
-../../dotfiles/.config/nvim/init.lua
+require("core.options")
+require("core.mappings")
+
+-- Lazy 
+require("config.lazy")

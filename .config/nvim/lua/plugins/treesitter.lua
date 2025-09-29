@@ -1,1 +1,11 @@
-../../../../dotfiles/.config/nvim/lua/plugins/treesitter.lua
+return {
+    "nvim-treesitter/nvim-treesitter",
+    branch = 'master',
+    lazy = false,
+    build = ":TSUpdate",
+    config = function()
+        require("nvim-treesitter").setup({
+            auto_install = true,
+        })
+    end 
+}
