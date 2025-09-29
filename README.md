@@ -1,2 +1,3 @@
 # dotfiles
-My configs and dotfiles powered with chezmoi
+
+My dotfiles managed using GNU stow.
