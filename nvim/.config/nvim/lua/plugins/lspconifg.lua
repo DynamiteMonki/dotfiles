@@ -21,5 +21,11 @@ return {
 			settings = { Lua = { diagnostics = { globals = { "vim" } } } },
 		})
 		vim.lsp.enable("lua_ls")
+
+		-- GO - gopls
+		vim.lsp.config("gopls", {
+			capabilities = capabilities,
+		})
+		vim.lsp.enable("gopls")
 	end,
 }
