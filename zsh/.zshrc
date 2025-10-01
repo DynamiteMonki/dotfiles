@@ -80,3 +80,10 @@ zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
 source <(carapace _carapace)
 
 # echo 'eval "$(zellij setup --generate-auto-start zsh)"' >> ~/.zshrc
+
+####### phpenv 
+export PHPENV_ROOT="/home/cat/.phpenv"
+if [ -d "${PHPENV_ROOT}" ]; then
+  export PATH="${PHPENV_ROOT}/bin:${PATH}"
+  eval "$(phpenv init -)"
+fi
