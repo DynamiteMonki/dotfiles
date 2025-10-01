@@ -72,7 +72,6 @@ eval "$(~/.local/bin/mise activate zsh)"
 . "$HOME/.atuin/bin/env"
 
 eval "$(atuin init zsh)"
-source "$HOME/.cargo/env"
 
 # Carapace 
 # ${UserConfigDir}/zsh/.zshrc

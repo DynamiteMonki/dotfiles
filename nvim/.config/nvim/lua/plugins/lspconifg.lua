@@ -27,5 +27,17 @@ return {
 			capabilities = capabilities,
 		})
 		vim.lsp.enable("gopls")
+
+		-- Tailwindcss
+		vim.lsp.config("tailwindcss", {
+			capabilities = capabilities,
+		})
+		vim.lsp.enable("tailwindcss")
+
+		-- Typescript and javascript
+		vim.lsp.config("ts_ls", {
+			capabilities = capabilities,
+		})
+		vim.lsp.enable("ts_ls")
 	end,
 }
