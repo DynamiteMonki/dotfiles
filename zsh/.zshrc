@@ -87,3 +87,9 @@ if [ -d "${PHPENV_ROOT}" ]; then
   export PATH="${PHPENV_ROOT}/bin:${PATH}"
   eval "$(phpenv init -)"
 fi
+
+[ -s "${HOME}/.g/env" ] && \. "${HOME}/.g/env"  # g shell setup
+
+if [[ -n $(alias g 2>/dev/null) ]]; then
+    unalias g
+fi

@@ -11,6 +11,7 @@ return {
 			c = { "clang-format" },
 			javascript = { "prettier" },
 			typescript = { "prettier" },
+			go = { "goimports", "gofumpt" },
 		},
 		-- Autoformat on save
 		format_on_save = {
