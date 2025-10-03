@@ -16,7 +16,8 @@ return {
 			})
 
 			vim.lsp.config("gopls", { capabilites = capabilites })
-			vim.lsp.enable("lua_ls", "gopls")
+			vim.lsp.config("clangd", { capabilites = capabilites })
+			vim.lsp.enable("lua_ls", "gopls", "clangd")
 		end,
 	},
 }

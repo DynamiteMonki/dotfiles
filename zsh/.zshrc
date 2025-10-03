@@ -92,3 +92,4 @@ fi
 
 eval "$(/home/cat/.local/bin/mise activate zsh)" # added by https://mise.run/zsh
 eval "$(mise activate zsh)"
+export PATH="/home/cat/.gdvm/bin/current_godot:/home/cat/.gdvm/bin:$PATH"

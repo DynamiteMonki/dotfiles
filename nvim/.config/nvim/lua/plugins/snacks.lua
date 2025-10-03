@@ -14,7 +14,7 @@ return {
 	keys = {
 		-- Essential File/Search (Telescope-like)
 		{
-			"<leader><space>",
+			"<leader>ff",
 			function()
 				Snacks.picker.files()
 			end,
