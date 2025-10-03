@@ -61,10 +61,6 @@ function zz() {
 }
 
 #### The installs 
-
-## Mise init 
-eval "$(~/.local/bin/mise activate zsh)"
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -93,3 +89,6 @@ fi
 if [[ -n $(alias g 2>/dev/null) ]]; then
     unalias g
 fi
+
+eval "$(/home/cat/.local/bin/mise activate zsh)" # added by https://mise.run/zsh
+eval "$(mise activate zsh)"
