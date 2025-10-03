@@ -1,0 +1,3 @@
+[*.lua]
+indent_style = true
+indent_size = 2

@@ -1,5 +1,4 @@
 require("core.options")
 require("core.keymaps")
--- lazy config 
+-- lazy config
 require("core.lazy")
-
