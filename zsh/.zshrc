@@ -28,6 +28,7 @@ alias glowp="glow -p"
 alias cnvim="nvim --clean"
 alias v="nvim"
 alias cd="z"
+alias vim="nvim"
 
 # Completion styling 
 zstyle ':zinit:*' use-gh-https 'yes'
