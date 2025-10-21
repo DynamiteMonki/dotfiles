@@ -47,5 +47,11 @@ return {
     })
     vim.lsp.enable("pyright", true)
 
+    -- the javascript/typescript config
+    vim.lsp.config("ts_ls", {
+      capabilities = capabilities,
+    })
+    vim.lsp.enable("ts_ls", true)
+
   end,
 }
