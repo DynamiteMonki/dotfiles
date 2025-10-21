@@ -8,11 +8,6 @@ return {
         python = { "black" },
         rust = { "rustfmt" },
         cpp = { "clang-format" },
-        javascript = { "biome" },
-        typescript = { "biome" },
-        javascriptreact = { "biome" },
-        typescriptreact = { "biome" },
-        json = { "biome" },
       },
     },
     config = function()

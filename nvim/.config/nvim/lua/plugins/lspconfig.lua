@@ -47,10 +47,5 @@ return {
     })
     vim.lsp.enable("pyright", true)
 
-    -- the javascript config
-    vim.lsp.config("typescript-language-server", {
-      capabilities = capabilities
-    })
-    vim.lsp.enable("typescript-language-server", true)
   end,
 }
