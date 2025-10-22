@@ -53,5 +53,31 @@ return {
     })
     vim.lsp.enable("ts_ls", true)
 
+    -- svelte config
+    vim.lsp.config("svelte", {
+      capabilities = capabilities,
+    })
+    vim.lsp.enable("svelte", true)
+
+    -- eslint for better linting
+    vim.lsp.config("eslint", {
+      capabilities = capabilities,
+    })
+    vim.lsp.enable("eslint", true)
+
+    -- emmet for html/css snippets
+    vim.lsp.config("emmet_language_server", {
+      capabilities = capabilities,
+      filetypes = {
+        "html",
+        "css",
+        "scss",
+        "javascriptreact",
+        "typescriptreact",
+        "svelte",
+      },
+    })
+    vim.lsp.enable("emmet_language_server", true)
+
   end,
 }

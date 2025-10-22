@@ -14,8 +14,10 @@ return {
         typescriptreact = { "prettier" },
         json = { "prettier" },
         css = { "prettier" },
+        scss = { "prettier" },
         html = { "prettier" },
         markdown = { "prettier" },
+        svelte = { "prettier" },
       },
     },
     config = function()
