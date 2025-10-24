@@ -5,6 +5,7 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				go = { "goimports", "gofumpt" },
+				rust = { "clippy" },
 			},
 		})
 		-- autocmd
