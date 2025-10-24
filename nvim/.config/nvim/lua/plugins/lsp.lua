@@ -1,5 +1,4 @@
 return {
-
   "neovim/nvim-lspconfig",
   dependencies = {
       {
@@ -13,7 +12,6 @@ return {
       },
   },
   config = function()
-
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = vim.tbl_deep_extend('force', capabilities, require("blink.cmp").get_lsp_capabilities({}, false))
     capabilities = vim.tbl_deep_extend('force', capabilities, {
@@ -24,7 +22,6 @@ return {
         }
       }
     })
-
     vim.lsp.config("lua_ls", {
       settings = {
         Lua = {
@@ -37,5 +34,4 @@ return {
     })
     vim.lsp.enable("lua_ls", true)
   end,
-
 }
