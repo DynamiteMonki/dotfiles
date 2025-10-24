@@ -1,75 +1,51 @@
 local opt = vim.opt
 
--- UI & Appearance
-opt.number = true                -- Show line numbers
-opt.relativenumber = true        -- Relative line numbers
-opt.termguicolors = true         -- True color support
-opt.signcolumn = "yes"           -- Always show sign column
-opt.cursorline = true            -- Highlight current line
-opt.scrolloff = 8                -- Lines of context
-opt.sidescrolloff = 8            -- Columns of context
-opt.wrap = false                 -- No line wrap
-opt.showmode = false             -- Don't show mode (status line does this)
-opt.pumheight = 10               -- Popup menu height
-opt.conceallevel = 0             -- So that `` is visible in markdown files
+-- Line Numbers
+opt.relativenumber = true -- Show relative line numbers
+opt.number = true         -- Show absolute line number on current line
+opt.numberwidth = 4       -- Set number column width
 
--- Line Numbers & Ruler
-opt.ruler = true
-opt.numberwidth = 4
+-- Tabs & Indentation
+opt.tabstop = 2           -- Number of spaces tabs count for
+opt.shiftwidth = 2        -- Size of an indent
+opt.expandtab = true      -- Use spaces instead of tabs
+opt.autoindent = true     -- Copy indent from current line when starting new one
+opt.smartindent = true    -- Insert indents automatically
+opt.wrap = false          -- Disable line wrap
 
--- Search
-opt.ignorecase = true            -- Ignore case in search
-opt.smartcase = true             -- Unless uppercase is used
-opt.hlsearch = true              -- Highlight search results
-opt.incsearch = true             -- Incremental search
+-- Search Settings
+opt.ignorecase = true     -- Case insensitive searching
+opt.smartcase = true      -- If you include mixed case, assumes case sensitive
+opt.hlsearch = false      -- Don't highlight all search results
+opt.incsearch = true      -- Show search matches as you type
 
--- Indentation
-opt.tabstop = 2                  -- Number of spaces tabs count for
-opt.softtabstop = 2
-opt.shiftwidth = 2               -- Size of an indent
-opt.expandtab = true             -- Use spaces instead of tabs
-opt.smartindent = true           -- Insert indents automatically
-opt.autoindent = true
+-- Cursor Line
+opt.cursorline = true     -- Highlight the current cursor line
 
--- Splits
-opt.splitright = true            -- Vertical split to the right
-opt.splitbelow = true            -- Horizontal split below
+-- Appearance
+opt.termguicolors = true  -- Enable 24-bit RGB colors
+opt.signcolumn = "yes"    -- Always show sign column so text doesn't shift
+opt.cmdheight = 1         -- More space for displaying messages
+opt.showmode = false      -- Don't show mode since we have a statusline
 
 -- Clipboard
-opt.clipboard = "unnamedplus"    -- Use system clipboard
+opt.clipboard:append("unnamedplus") -- Use system clipboard
 
--- Mouse
-opt.mouse = "a"                  -- Enable mouse mode
-
--- Files & Backups
-opt.backup = false               -- Don't create backup files
-opt.writebackup = false
-opt.swapfile = false             -- Don't create swap files
-opt.undofile = true              -- Persistent undo
+-- Backup & Undo
+opt.swapfile = false      -- Don't create swapfile
+opt.backup = false        -- Don't create backup file
+opt.undofile = true       -- Enable persistent undo
 opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 
--- Completion
-opt.completeopt = { "menu", "menuone", "noselect" }
-
 -- Performance
-opt.updatetime = 250             -- Faster completion (default: 4000ms)
-opt.timeoutlen = 300             -- Time to wait for mapped sequence
-opt.lazyredraw = false           -- Don't redraw while executing macros
+opt.updatetime = 50       -- Faster completion (4000ms default)
+opt.timeoutlen = 500      -- Time to wait for a mapped sequence to complete
 
--- Editing
-opt.backspace = { "indent", "eol", "start" }
-opt.iskeyword:append("-")        -- Treat dash as part of word
-
--- Folding (if you use it)
-opt.foldmethod = "manual"
-opt.foldlevel = 99
-
--- Encoding
-opt.encoding = "utf-8"
+-- File Encoding
+opt.encoding = "utf-8"    -- Set encoding to UTF-8
 opt.fileencoding = "utf-8"
 
 -- Miscellaneous
-opt.hidden = true                -- Enable background buffers
-opt.history = 100                -- Command history
-opt.synmaxcol = 240              -- Max column for syntax highlight
-opt.shortmess:append("c")        -- Don't pass messages to ins-completion-menu
+opt.iskeyword:append("-") -- Consider string-string as whole word
+opt.mouse = "a"           -- Enable mouse support
+
