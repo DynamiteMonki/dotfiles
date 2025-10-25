@@ -1,3 +1,5 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/home/vivek/.zsh/completions:"* ]]; then export FPATH="/home/vivek/.zsh/completions:$FPATH"; fi
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -77,3 +79,4 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # bun completions
 [ -s "/home/vivek/.bun/_bun" ] && source "/home/vivek/.bun/_bun"
+. "/home/vivek/.deno/env"
