@@ -6,6 +6,7 @@ local options = {
     python = { "black" },
     c = { "clang-format" },
     cpp = { "clang-format" },
+    javascript = { "clang-format" },
   },
 
   format_on_save = {
