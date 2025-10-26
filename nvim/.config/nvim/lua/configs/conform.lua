@@ -1,12 +1,12 @@
 local options = {
   formatters_by_ft = {
+    rust = { "rustfmt" },
     lua = { "stylua" },
     css = { "prettier" },
     html = { "prettier" },
     python = { "black" },
     c = { "clang-format" },
     cpp = { "clang-format" },
-    javascript = { "clang-format" },
   },
 
   format_on_save = {
