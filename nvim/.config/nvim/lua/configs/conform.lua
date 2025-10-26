@@ -7,7 +7,7 @@ local options = {
     python = { "black" },
     c = { "clang-format" },
     cpp = { "clang-format" },
-    go = { "gofumpt", "goimports" },
+    go = { "gofumpt" },
   },
 
   format_on_save = {
