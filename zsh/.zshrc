@@ -60,6 +60,8 @@ alias c='clear'
 alias ll="ls -l"
 alias l="ls -la"
 alias fige="nvim ~/.zshrc"
+alias cnvim="nvim --clean"
+alias la="ls -a"
 
 # Shell integrations
 eval "$(fzf --zsh)"
