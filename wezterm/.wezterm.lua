@@ -4,7 +4,7 @@ local config = {}
 config.font = wezterm.font({
 	family = "JetBrains Mono",
 	harfbuzz_features = {
-		"calt=1", -- Contextual alternatives
+		"calt=0", -- Contextual alternatives
 		"clig=1", -- Contextual ligatures
 		"liga=1", -- Standard ligatures
 		"zero", -- Slashed zero
