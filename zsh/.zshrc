@@ -68,7 +68,6 @@ eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
 eval "$(~/.local/bin/mise activate zsh)"
-eval "$(atuin init zsh)"
 eval "$(zoxide init zsh)"
 
 [ -s "${HOME}/.g/env" ] && \. "${HOME}/.g/env"  # g shell setup
@@ -82,3 +81,16 @@ export SDKMAN_DIR="$HOME/.sdkman"
 # bun completions
 [ -s "/home/vivek/.bun/_bun" ] && source "/home/vivek/.bun/_bun"
 . "/home/vivek/.deno/env"
+
+# Better preview with exa/eza or ls
+zz() {
+    local dir
+    dir=$(zoxide query -l | fzf \
+        --height 60% \
+        --reverse \
+        --preview 'eza -la --color=always {} 2>/dev/null || ls -la {}' \
+        --preview-window right:60% \
+        --bind 'ctrl-/:toggle-preview') && cd "$dir"
+}
+
+eval "$(atuin init zsh)"
