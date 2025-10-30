@@ -21,3 +21,6 @@ vim.keymap.set("n", "]b", ":bnext<CR>", { desc = "Next buffer", silent = true })
 vim.keymap.set("n", "[b", ":bprevious<CR>", { desc = "Previous buffer", silent = true })
 
 vim.keymap.set("n", "<leader>q", ":q<CR>", { desc = "Quickly get out", silent = true })
+
+-- the jj
+vim.keymap.set("i", "jj", "<ESC>", { desc = "Escape to normal mode", silent = true })

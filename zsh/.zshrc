@@ -21,6 +21,7 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 zinit light zdharma-continuum/fast-syntax-highlighting
+zinit load atuinsh/atuin
 
 # Load completions
 autoload -Uz compinit && compinit
@@ -45,7 +46,10 @@ setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
-
+# ${UserConfigDir}/zsh/.zshrc
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+source <(carapace _carapace)
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
@@ -94,3 +98,5 @@ zz() {
 }
 
 eval "$(atuin init zsh)"
+
+. "$HOME/.atuin/bin/env"
