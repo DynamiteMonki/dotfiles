@@ -40,4 +40,4 @@ eval "$(atuin init zsh)"
 export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
 zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
 source <(carapace _carapace)
-
+export PATH="/home/vivek/.gdvm/bin/current_godot:/home/vivek/.gdvm/bin:$PATH"
