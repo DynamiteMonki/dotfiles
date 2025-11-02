@@ -3,11 +3,6 @@ if [[ ":$FPATH:" != *":/home/vivek/.zsh/completions:"* ]]; then
   export FPATH="/home/vivek/.zsh/completions:$FPATH";
 fi
 
-# ${UserConfigDir}/zsh/.zshrc
-export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
-zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
-source <(carapace _carapace)
-
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
@@ -27,9 +22,6 @@ eval "$(fzf --zsh)"
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-# bun completions
-[ -s "/home/vivek/.bun/_bun" ] && source "/home/vivek/.bun/_bun"
-
 # Better preview with exa/eza or ls
 zz() {
     local dir
@@ -43,3 +35,9 @@ zz() {
 
 . "$HOME/.atuin/bin/env"
 eval "$(atuin init zsh)"
+
+# ${UserConfigDir}/zsh/.zshrc
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+source <(carapace _carapace)
+

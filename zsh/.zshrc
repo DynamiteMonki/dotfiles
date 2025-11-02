@@ -15,7 +15,7 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 # Define the directory containing your modules
 ZSH_MODULES_DIR="$HOME/.zsh/"
-
+eval "$(~/.local/bin/mise activate zsh)"
 # Loop through all .zsh files in the directory and source them
 for module in $ZSH_MODULES_DIR/*.zsh; do
   source "$module"
