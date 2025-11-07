@@ -14,8 +14,9 @@ config.font = wezterm.font({
 	-- italic = true,
 })
 
+config.color_scheme = "Material Darker (base16)"
+
 config.font_size = 14.5
-config.color_scheme = "One Dark (Gogh)"
 config.window_background_opacity = 0.97
 config.window_padding = {
 	left = 0,

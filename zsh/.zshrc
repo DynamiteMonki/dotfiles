@@ -30,3 +30,14 @@ zinit cdreplay -q
 
 # Keybindings
 bindkey -v
+
+export GOPATH="$HOME/go"; export GOROOT="$HOME/.g/go"; export PATH="$GOPATH/bin:$PATH"; # g-install: do NOT edit, see https://github.com/stefanmaric/g
+
+
+# BEGIN opam configuration
+# This is useful if you're using opam as it adds:
+#   - the correct directories to the PATH
+#   - auto-completion for the opam binary
+# This section can be safely removed at any time if needed.
+[[ ! -r '/home/vivek/.opam/opam-init/init.zsh' ]] || source '/home/vivek/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
+# END opam configuration
