@@ -1,21 +1,46 @@
 return {
-  'nvim-tree/nvim-tree.lua',
-  dependencies = {
-    'nvim-tree/nvim-web-devicons', -- Optional, for file icons
-  },
-  config = function()
-    -- Disable netrw which is the default file explorer
-    vim.g.loaded_netrw = 1
-    vim.g.loaded_netrwPlugin = 1
+	"nvim-neo-tree/neo-tree.nvim",
+	branch = "v3.x",
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+		"nvim-tree/nvim-web-devicons", -- Make sure this is here!
+		"MunifTanjim/nui.nvim",
+	},
+	config = function()
+		-- First, setup nvim-web-devicons
+		require("nvim-web-devicons").setup({
+			override = {},
+			default = true,
+		})
 
-    -- Set up nvim-tree
-    require('nvim-tree').setup({
-      -- Options go here. For now, we'll use defaults.
-      -- See :help nvim-tree.setup for more options.
-    })
+		require("neo-tree").setup({
+			close_if_last_window = false,
+			popup_border_style = "rounded",
+			enable_git_status = true,
+			enable_diagnostics = true,
 
-    -- Keymap to toggle the file explorer
-    local keymap = vim.keymap.set
-    keymap('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', { desc = 'Toggle file explorer' })
-  end,
+			window = {
+				position = "float",
+				popup = {
+					size = {
+						height = "85%",
+						width = "50%",
+					},
+					position = {
+						row = "5%",
+						col = "50%",
+					},
+				},
+			},
+
+			filesystem = {
+				follow_current_file = {
+					enabled = true,
+				},
+				use_libuv_file_watcher = true,
+			},
+
+			vim.keymap.set("n", "<leader>e", "<CMD>Neotree<CR>", { desc = "File explorer", silent = true }),
+		})
+	end,
 }
