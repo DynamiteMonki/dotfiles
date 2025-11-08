@@ -43,5 +43,10 @@ return {
 			capabilities = capabilities,
 		})
 		vim.lsp.enable("clangd")
+
+		vim.lsp.config("gopls", {
+			capabilities = capabilities,
+		})
+		vim.lsp.enable("gopls")
 	end,
 }
