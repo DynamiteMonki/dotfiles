@@ -5,6 +5,7 @@ return {
 			lua = { "stylua" },
 			c = { "clang-format" },
 			go = { "gofumpt" },
+			python = { "ruff" },
 		},
 	},
 }

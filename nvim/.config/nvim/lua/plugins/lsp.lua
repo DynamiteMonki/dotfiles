@@ -27,6 +27,7 @@ return {
 			},
 		})
 
+		-- lua setup
 		vim.lsp.config("lua_ls", {
 			capabilities = capabilities,
 			settings = {
@@ -39,14 +40,22 @@ return {
 		})
 		vim.lsp.enable("lua_ls")
 
+		-- clangd setup
 		vim.lsp.config("clangd", {
 			capabilities = capabilities,
 		})
 		vim.lsp.enable("clangd")
 
+		-- the go lang setup
 		vim.lsp.config("gopls", {
 			capabilities = capabilities,
 		})
 		vim.lsp.enable("gopls")
+
+		-- python setup
+		vim.lsp.config("basedpyright", {
+			capabilities = capabilities,
+		})
+		vim.lsp.enable("basedpyright")
 	end,
 }
