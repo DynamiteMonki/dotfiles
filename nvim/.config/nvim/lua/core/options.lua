@@ -24,7 +24,7 @@ vim.o.hidden = true
 vim.o.updatetime = 300
 vim.o.winborder = "rounded"
 
-vim.o.guicursor = "a:block"
+-- vim.o.guicursor = "a:block"
 -- Persistent undo directory setup
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.stdpath("data") .. "/undodir"
