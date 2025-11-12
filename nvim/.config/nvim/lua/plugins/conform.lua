@@ -6,6 +6,8 @@ return {
 			c = { "clang-format" },
 			go = { "gofumpt" },
 			python = { "ruff" },
+			javascript = { "clang-format" },
+			typescript = { "clang-format" },
 		},
 	},
 }

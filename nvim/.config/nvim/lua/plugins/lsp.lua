@@ -59,12 +59,18 @@ return {
 			capabilities = capabilities,
 		})
 
+		-- deno setup
+		vim.lsp.config("denols", {
+			capabilities = capabilities,
+		})
+
 		vim.lsp.enable({
 			"lua_ls",
 			"ocamllsp",
 			"basedpyright",
 			"gopls",
 			"clangd",
+			"denols",
 		}, true)
 	end,
 }

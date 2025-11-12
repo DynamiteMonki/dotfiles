@@ -17,7 +17,7 @@ vim.o.smartcase = true
 vim.o.scrolloff = 8
 vim.o.signcolumn = "yes"
 vim.o.cursorline = true
--- vim.o.wrap = false
+vim.o.wrap = false
 vim.o.cmdheight = 1
 
 vim.o.hidden = true
