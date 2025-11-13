@@ -28,3 +28,5 @@ vim.o.guicursor = "a:block"
 -- Persistent undo directory setup
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.stdpath("data") .. "/undodir"
+
+vim.o.conceallevel = 2
