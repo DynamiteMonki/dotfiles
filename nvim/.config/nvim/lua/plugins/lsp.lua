@@ -64,6 +64,11 @@ return {
 			capabilities = capabilities,
 		})
 
+		-- java setup
+		vim.lsp.config("jdtls", {
+			capabilities = capabilities,
+		})
+
 		vim.lsp.enable({
 			"lua_ls",
 			"ocamllsp",
@@ -71,6 +76,7 @@ return {
 			"gopls",
 			"clangd",
 			"denols",
+			"jdtls",
 		}, true)
 	end,
 }
