@@ -1,0 +1,13 @@
+return {
+	"stevearc/conform.nvim",
+	opts = {
+		formatters_by_ft = {
+			lua = { "stylua" },
+			c = { "clang-format" },
+			go = { "gofumpt" },
+			python = { "ruff" },
+			javascript = { "clang-format" },
+			typescript = { "clang-format" },
+		},
+	},
+}
