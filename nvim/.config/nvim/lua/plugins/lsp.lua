@@ -40,7 +40,15 @@ return {
 			capabilities = capabilities,
 		})
 
-		vim.lsp.enable({ "lua_ls", "jdtls", "clangd" })
+		vim.lsp.config("ocamllsp", {
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("pyright", {
+			capabilities = capabilities,
+		})
+
+		vim.lsp.enable({ "lua_ls", "jdtls", "clangd", "ocamllsp", "pyright" })
 
 		-- in line diagnostics
 		vim.diagnostic.config({
