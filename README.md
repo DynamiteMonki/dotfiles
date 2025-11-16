@@ -1,5 +1,1 @@
-This are my configs and set up using stow the one from GNU.
-
-# Benifits
-
-- Fast setup if I get a new machine
+This is my sweat little config. That uses GNU Stow to setup my config blazingly fast.
