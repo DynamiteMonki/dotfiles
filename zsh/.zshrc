@@ -91,3 +91,5 @@ export GOPATH="$HOME/go"; export GOROOT="$HOME/.g/go"; export PATH="$GOPATH/bin:
 # This section can be safely removed at any time if needed.
 [[ ! -r '/home/vivek/.opam/opam-init/init.zsh' ]] || source '/home/vivek/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
 # END opam configuration
+
+export PATH="$PATH:$HOME/.local/share/bob/nvim-bin"
