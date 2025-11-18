@@ -83,8 +83,6 @@ eval "$(atuin init zsh)"
 
 export GOPATH="$HOME/go"; export GOROOT="$HOME/.g/go"; export PATH="$GOPATH/bin:$PATH"; # g-install: do NOT edit, see https://github.com/stefanmaric/g
 
-export PATH="$PATH:$HOME/.local/share/bob/nvim-bin"
-
 
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:
