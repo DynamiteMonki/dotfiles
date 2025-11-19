@@ -1,7 +1,3 @@
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
 if [ ! -d "$ZINIT_HOME" ]; then
@@ -10,6 +6,58 @@ if [ ! -d "$ZINIT_HOME" ]; then
 fi
 
 source "${ZINIT_HOME}/zinit.zsh"
+
+#PROMPT 
+autoload -U colors && colors
+setopt PROMPT_SUBST
+
+git_status() {
+  local branch flags ahead behind stash merge rebase
+
+  branch=$(git symbolic-ref --short HEAD 2>/dev/null) || return
+
+  flags=""
+  # Check unstaged changes
+  git diff --quiet 2>/dev/null || flags+="%F{red}*%f"
+  # Check staged changes
+  git diff --cached --quiet 2>/dev/null || flags+="%F{green}+%f"
+  # Untracked files
+  [[ -n $(git ls-files --others --exclude-standard) ]] && flags+="%F{magenta}?%f"
+  # Stash count
+  stash=$(git stash list 2>/dev/null | wc -l) && [[ $stash -gt 0 ]] && flags+="%F{magenta}\$%f"
+  # Merge or rebase detection
+  [[ -d .git/MERGE_HEAD ]] && flags+="%F{cyan}!%f"
+  [[ -d .git/rebase-apply || -d .git/rebase-merge ]] && flags+="%F{cyan}|%f"
+  # Ahead/behind tracking
+  if git rev-parse --symbolic-full-name @{upstream} >/dev/null 2>&1; then
+    local upstream=$(git rev-parse @{upstream})
+    local local_branch=$(git rev-parse HEAD)
+    ahead=$(git rev-list --count ${upstream}..${local_branch})
+    behind=$(git rev-list --count ${local_branch}..${upstream})
+    [[ $ahead -gt 0 ]] && flags+="%F{blue}↑${ahead}%f"
+    [[ $behind -gt 0 ]] && flags+="%F{blue}↓${behind}%f"
+  fi
+
+  echo "%F{yellow}[$branch$flags]%f"
+}
+
+truncate_path() {
+  local max=3
+  local path="${PWD/#$HOME/~}"
+  IFS=/ read -r -A parts <<< "${path#~/}"
+  if (( ${#parts[@]} > max )); then
+    echo "~/${(j:/:)parts[-$max,-1]}"
+  else
+    echo "$path"
+  fi
+}
+
+RPROMPT='%(?..%F{red}exit %?%f)'
+
+precmd() { echo }
+
+PROMPT="%B%F{cyan}\$(truncate_path)%f%b \$(git_status)
+%(?.%F{magenta}➜%f.%F{red}➜%f) "
 
 # History
 HISTSIZE=5000
@@ -24,9 +72,6 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
-
-zinit ice depth=1; zinit light romkatv/powerlevel10k
-
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
@@ -36,8 +81,6 @@ eval "$(~/.local/bin/mise activate zsh)"
 autoload -Uz compinit && compinit
 zinit cdreplay -q
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 # Keybindings
 bindkey -v
 
@@ -82,7 +125,6 @@ zz() {
 eval "$(atuin init zsh)"
 
 export GOPATH="$HOME/go"; export GOROOT="$HOME/.g/go"; export PATH="$GOPATH/bin:$PATH"; # g-install: do NOT edit, see https://github.com/stefanmaric/g
-
 
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:
