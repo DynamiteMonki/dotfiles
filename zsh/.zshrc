@@ -8,41 +8,13 @@ fi
 source "${ZINIT_HOME}/zinit.zsh"
 
 #PROMPT 
+#
 autoload -U colors && colors
 setopt PROMPT_SUBST
 
-git_status() {
-  local branch flags ahead behind stash merge rebase
-
-  branch=$(git symbolic-ref --short HEAD 2>/dev/null) || return
-
-  flags=""
-  # Check unstaged changes
-  git diff --quiet 2>/dev/null || flags+="%F{red}*%f"
-  # Check staged changes
-  git diff --cached --quiet 2>/dev/null || flags+="%F{green}+%f"
-  # Untracked files
-  [[ -n $(git ls-files --others --exclude-standard) ]] && flags+="%F{magenta}?%f"
-  # Stash count
-  stash=$(git stash list 2>/dev/null | wc -l) && [[ $stash -gt 0 ]] && flags+="%F{magenta}\$%f"
-  # Merge or rebase detection
-  [[ -d .git/MERGE_HEAD ]] && flags+="%F{cyan}!%f"
-  [[ -d .git/rebase-apply || -d .git/rebase-merge ]] && flags+="%F{cyan}|%f"
-  # Ahead/behind tracking
-  if git rev-parse --symbolic-full-name @{upstream} >/dev/null 2>&1; then
-    local upstream=$(git rev-parse @{upstream})
-    local local_branch=$(git rev-parse HEAD)
-    ahead=$(git rev-list --count ${upstream}..${local_branch})
-    behind=$(git rev-list --count ${local_branch}..${upstream})
-    [[ $ahead -gt 0 ]] && flags+="%F{blue}↑${ahead}%f"
-    [[ $behind -gt 0 ]] && flags+="%F{blue}↓${behind}%f"
-  fi
-
-  echo "%F{yellow}[$branch$flags]%f"
-}
-
+# Truncate directory, show ~ for HOME, with a configurable max depth
 truncate_path() {
-  local max=3
+  local max=2
   local path="${PWD/#$HOME/~}"
   IFS=/ read -r -A parts <<< "${path#~/}"
   if (( ${#parts[@]} > max )); then
@@ -52,12 +24,44 @@ truncate_path() {
   fi
 }
 
+# Enhanced git status like robbyrussell with added info & colors
+git_status() {
+  local branch flags ahead behind stash
+
+  branch=$(git symbolic-ref --short HEAD 2>/dev/null) || return
+  flags=""
+
+  # unstaged changes
+  git diff --quiet 2>/dev/null || flags+="%F{red}*%f"
+  # staged changes
+  git diff --cached --quiet 2>/dev/null || flags+="%F{green}+%f"
+  # untracked files
+  [[ -n $(git ls-files --others --exclude-standard) ]] && flags+="%F{magenta}?%f"
+  # stashed changes
+  stash=$(git stash list 2>/dev/null | wc -l)
+  (( stash > 0 )) && flags+="%F{magenta}\$%f"
+
+  if git rev-parse --symbolic-full-name @{upstream} >/dev/null 2>&1; then
+    local upstream=$(git rev-parse @{upstream})
+    local local_branch=$(git rev-parse HEAD)
+    ahead=$(git rev-list --count ${upstream}..${local_branch})
+    behind=$(git rev-list --count ${local_branch}..${upstream})
+    (( ahead > 0 )) && flags+="%F{blue}↑${ahead}%f"
+    (( behind > 0 )) && flags+="%F{blue}↓${behind}%f"
+  fi
+
+  echo "%F{yellow}(${branch}${flags})%f"
+}
+
+# Right prompt shows last error code if non-zero
 RPROMPT='%(?..%F{red}exit %?%f)'
 
+# Add a blank line before each prompt for spacing
 precmd() { echo }
 
-PROMPT="%B%F{cyan}\$(truncate_path)%f%b \$(git_status)
-%(?.%F{magenta}➜%f.%F{red}➜%f) "
+# Prompt itself
+PROMPT='%F{cyan}$(truncate_path)%f $(git_status)
+%(?.%F{magenta}>%f.%F{red}>%f) '
 
 # History
 HISTSIZE=5000
