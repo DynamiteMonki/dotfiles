@@ -2,8 +2,8 @@ vim.g.mapleader = " "
 
 local map = vim.keymap.set
 
-map("n", "<leader>q", "<CMD>q<CR>")
-map("n", "<leader>o", "<CMD>restart<CR>")
+map("n", "<leader>q", "<CMD>q<CR>", { desc = "Quit neovim" })
+map("n", "<leader>o", "<CMD>restart<CR>", { desc = "Restart" })
 
 -- Yank to end of line (like D and C but for yanking)
 map("n", "Y", "y$", { desc = "Yank to end of line" })

@@ -1,9 +1,9 @@
-return
-{
-  'stevearc/conform.nvim',
-  opts = {
+return {
+	"stevearc/conform.nvim",
+	opts = {
 		formatters_by_ft = {
-			lua = {"stylua"},
+			lua = { "stylua" },
+			c = { "clang-format" },
 		},
 	},
 }
