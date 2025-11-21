@@ -6,68 +6,67 @@ return {
 	},
 	config = function()
 		require("nvim-tree").setup({
-			-- LOGIC: Handling Dotfiles
+			-- 1. THE FLOAT CONFIGURATION
+			view = {
+				-- This makes it a "separate window" floating on top
+				float = {
+					enable = true,
+					quit_on_focus_loss = true, -- Close explorer if you click outside it
+					open_win_config = function()
+						local screen_w = vim.opt.columns:get()
+						local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
+						local window_w = screen_w * 0.5 -- Width: 50% of screen
+						local window_h = screen_h * 0.8 -- Height: 80% of screen
+						local center_x = (screen_w - window_w) / 2
+						local center_y = ((vim.opt.lines:get() - window_h) / 2) - vim.opt.cmdheight:get()
+
+						return {
+							border = "rounded", -- Rounded corners
+							relative = "editor",
+							row = center_y,
+							col = center_x,
+							width = math.floor(window_w),
+							height = math.floor(window_h),
+						}
+					end,
+				},
+				width = function()
+					return math.floor(vim.opt.columns:get() * 0.5)
+				end,
+			},
+
+			-- 2. BEHAVIOR
+			-- Close the tree automatically after you pick a file
+			actions = {
+				open_file = {
+					quit_on_open = true,
+				},
+			},
+
+			-- 3. LOGIC: Handling Dotfiles (Same as before)
 			filters = {
-				dotfiles = false, -- false means "do NOT filter dotfiles" (show them)
-				custom = { "^.git$" }, -- explicitly hide the .git folder
+				dotfiles = false, -- SHOW dotfiles
+				custom = { "^.git$" }, -- HIDE the .git folder
 			},
 			git = {
 				enable = true,
-				ignore = false, -- Show files even if they are in .gitignore
-				timeout = 500,
+				ignore = false,
 			},
 
-			-- BEHAVIOR: Keep the tree in sync with your activity
-			sync_root_with_cwd = true,
-			respect_buf_cwd = true,
-			update_focused_file = {
-				enable = true,
-				update_root = true,
-			},
-
-			-- AESTHETICS: Making it "Not Ugly"
-			view = {
-				width = 30,
-				side = "left",
-				preserve_window_proportions = true,
-				number = false,
-				relativenumber = false,
-				signcolumn = "yes", -- Keep spacing consistent
-			},
-
+			-- 4. AESTHETICS (Clean Renderer)
 			renderer = {
-				root_folder_label = false, -- Hide the ugly full path at top
-				highlight_git = true, -- Color the files based on git status
-				indent_markers = {
-					enable = true,
-					inline_arrows = true,
-					icons = {
-						corner = "└",
-						edge = "│",
-						item = "│",
-						bottom = "─",
-						none = " ",
-					},
-				},
+				root_folder_label = false,
+				highlight_git = true,
+				indent_markers = { enable = true },
 				icons = {
-					show = {
-						file = true,
-						folder = true,
-						folder_arrow = true,
-						git = true,
-					},
 					glyphs = {
 						default = "󰈚",
-						symlink = "",
 						folder = {
 							default = "",
 							empty = "",
 							empty_open = "",
 							open = "",
 							symlink = "",
-							symlink_open = "",
-							arrow_open = "",
-							arrow_closed = "",
 						},
 						git = {
 							unstaged = "✗",
@@ -83,7 +82,7 @@ return {
 			},
 		})
 
-		-- Keymap to toggle the explorer
-		vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Toggle File Explorer" })
+		-- Toggle Keybind
+		vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Toggle Floating Explorer" })
 	end,
 }
