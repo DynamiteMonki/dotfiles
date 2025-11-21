@@ -31,7 +31,11 @@ return {
 			capabilities = capabilities,
 		})
 
-		vim.lsp.enable({ "lua_ls", "clangd" })
+		vim.lsp.config("gopls", {
+			capabilities = capabilities,
+		})
+
+		vim.lsp.enable({ "lua_ls", "clangd", "gopls" })
 
 		vim.diagnostic.config({
 			virtual_text = true,
