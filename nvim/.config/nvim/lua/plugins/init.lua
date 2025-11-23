@@ -27,4 +27,9 @@ return {
     "j-hui/fidget.nvim",
     opts = {},
   },
+
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    opts = {},
+  },
 }
