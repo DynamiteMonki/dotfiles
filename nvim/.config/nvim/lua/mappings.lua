@@ -16,3 +16,5 @@ map("n", "<leader>bn", "<CMD>bnext<CR>", { desc = "Next buf", silent = true })
 map("n", "<leader>bp", "<CMD>bprevious<CR>", { desc = "Prev buf", silent = true })
 
 map("n", "<leader>q", "<CMD>q<CR>")
+
+map("i", "jj", "<ESC>", { desc = "GO to normal" })
