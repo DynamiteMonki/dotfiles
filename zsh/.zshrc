@@ -1,14 +1,6 @@
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+#########################################
 
-if [ ! -d "$ZINIT_HOME" ]; then
-   mkdir -p "$(dirname $ZINIT_HOME)"
-   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-fi
-
-source "${ZINIT_HOME}/zinit.zsh"
-
-#PROMPT 
-#
+#PROMPT
 autoload -U colors && colors
 setopt PROMPT_SUBST
 
@@ -76,14 +68,8 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
-zinit light Aloxaf/fzf-tab
-zinit light zdharma-continuum/fast-syntax-highlighting
-
 eval "$(~/.local/bin/mise activate zsh)"
 autoload -Uz compinit && compinit
-zinit cdreplay -q
 
 # Keybindings
 bindkey -v
@@ -107,23 +93,6 @@ zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
 source <(carapace _carapace)
 export PATH="/home/vivek/.gdvm/bin/current_godot:/home/vivek/.gdvm/bin:$PATH"
 
-# Completion styling
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
-
-# Better preview with exa/eza or ls
-zz() {
-    local dir
-    dir=$(zoxide query -l | fzf \
-        --height 60% \
-        --reverse \
-        --preview 'eza -la --color=always {} 2>/dev/null || ls -la {}' \
-        --preview-window right:60% \
-        --bind 'ctrl-/:toggle-preview') && cd "$dir"
-}
 
 . "$HOME/.atuin/bin/env"
 eval "$(atuin init zsh)"
