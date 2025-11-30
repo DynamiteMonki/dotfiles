@@ -1,4 +1,4 @@
-local opt = vim.o 
+local opt = vim.opt 
 
 -- options
 opt.number = true
@@ -9,6 +9,9 @@ opt.signcolumn = "yes"
 opt.wrap = false
 opt.clipboard = "unnamedplus"
 vim.opt.shortmess:append("I")
+
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- spaces 
 opt.shiftwidth = 2
