@@ -24,5 +24,6 @@ config.window_padding = {
 	bottom = 0,
 }
 config.enable_tab_bar = false
+config.colors = { background = "black", foreground = "silver" }
 
 return config
