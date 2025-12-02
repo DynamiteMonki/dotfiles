@@ -1,0 +1,24 @@
+theme = "base16_transparent"
+
+[editor]
+line-number = "relative"
+cursorcolumn = false
+bufferline = "multiple"
+true-color = true
+color-modes = true
+
+# save one focus lost 
+auto-save = false # let it be false for now
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.indent-guides]
+render = true
+character = "|"
+skip-levels = 1
+
+[editor.file-picker]
+hidden = true

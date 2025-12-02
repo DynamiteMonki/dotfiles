@@ -1,0 +1,21 @@
+[[language]]
+name = "rust"
+auto-format = true
+
+[language-server]
+command = "rust-analyzer"
+
+[formatter]
+command = "rustfmt"
+args = ["--emit", "stdout"]
+
+[[language]]
+name = "go"
+auto-format = true
+
+[language-server]
+command = "gopls"
+
+[formatter]
+command = "gofmt"
+args = []
