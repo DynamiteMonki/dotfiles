@@ -1,8 +1,8 @@
 return {
-	"catppuccin/nvim",
-	name = "catppuccin",
-	priority = 1000,
+	"Shatur/neovim-ayu",
 	config = function ()
-		vim.cmd("colorscheme catppuccin")
+		local color = require("ayu.colors")
+		color.generate(true)
+		vim.cmd("colorscheme ayu")
 	end
 }
