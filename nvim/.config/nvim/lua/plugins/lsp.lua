@@ -1,7 +1,7 @@
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
-    {
+   {
       "folke/lazydev.nvim",
       ft = "lua",
       opts = {
@@ -12,7 +12,6 @@ return {
     },
   },
   config = function()
-
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities({}, false))
     capabilities = vim.tbl_deep_extend('force', capabilities, {
@@ -24,10 +23,30 @@ return {
       }
     })
 
-    vim.lsp.config("lua_ls", {
+    -- Configure lua_ls
+    vim.lsp.config.lua_ls = {
+      cmd = { "lua-language-server" },
+      filetypes = { "lua" },
+      -- root_markers = { ".luarc.json", ".luarc.jsonc", ".luacheckrc", ".stylua.toml", "stylua.toml", "selene.toml", "selene.yml", ".git" },
       capabilities = capabilities,
-    })
+      settings = {
+        Lua = {
+          diagnostics = {
+            globals = { "vim" },
+          },
+        },
+      },
+    }
 
-    vim.lsp.enable("lua_ls")
+    -- Configure rust_analyzer
+    vim.lsp.config.rust_analyzer = {
+      cmd = { "rust-analyzer" },
+      filetypes = { "rust" },
+      root_markers = { "Cargo.toml", "rust-project.json" },
+      capabilities = capabilities,
+    }
+
+    -- Enable the LSP servers
+    vim.lsp.enable({ "lua_ls", "rust_analyzer" })
   end,
 }
