@@ -1,4 +1,4 @@
-theme = "base16_transparent"
+theme = "ayu_evolve"
 
 [editor]
 line-number = "relative"
@@ -6,7 +6,7 @@ cursorcolumn = false
 bufferline = "multiple"
 true-color = true
 color-modes = true
-
+popup-border = "popup"
 # save one focus lost 
 auto-save = false # let it be false for now
 
