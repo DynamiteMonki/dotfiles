@@ -56,5 +56,10 @@ return {
 
 		-- Enable the LSP servers
 		vim.lsp.enable({ "lua_ls", "rust_analyzer", "basedpyright", "gopls" })
+
+		-- diagnostics
+		vim.diagnostic.config({
+			virtual_text = true,
+		})
 	end,
 }
