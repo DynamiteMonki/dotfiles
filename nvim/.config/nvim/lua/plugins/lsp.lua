@@ -50,7 +50,11 @@ return {
 			capabilities = capabilities,
 		})
 
+		vim.lsp.config("gopls", {
+			capabilities = capabilities,
+		})
+
 		-- Enable the LSP servers
-		vim.lsp.enable({ "lua_ls", "rust_analyzer", "basedpyright" })
+		vim.lsp.enable({ "lua_ls", "rust_analyzer", "basedpyright", "gopls" })
 	end,
 }

@@ -1,4 +1,4 @@
-local opt = vim.opt 
+local opt = vim.opt
 
 opt.number = true
 opt.relativenumber = true
@@ -12,11 +12,10 @@ opt.shiftwidth = 2
 opt.expandtab = true
 opt.autoindent = true
 opt.smartindent = true
-
+opt.shortmess:append("I")
 opt.ignorecase = true
 opt.smartcase = true
 opt.hlsearch = true
 opt.incsearch = true
-
+opt.clipboard = "unnamedplus"
 opt.undodir = vim.fn.stdpath("data") .. "/undodir"
-
