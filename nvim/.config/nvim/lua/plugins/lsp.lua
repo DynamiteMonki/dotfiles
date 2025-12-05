@@ -54,8 +54,12 @@ return {
 			capabilities = capabilities,
 		})
 
+		vim.lsp.config("clangd", {
+			capabilities = capabilities,
+		})
+
 		-- Enable the LSP servers
-		vim.lsp.enable({ "lua_ls", "rust_analyzer", "basedpyright", "gopls" })
+		vim.lsp.enable({ "lua_ls", "rust_analyzer", "basedpyright", "gopls", "clangd" })
 
 		-- diagnostics
 		vim.diagnostic.config({
